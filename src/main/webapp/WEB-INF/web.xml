@@ -4,8 +4,16 @@
         <servlet-name>CreateDB</servlet-name>
         <servlet-class>servlets.CreateDB</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CRUDUser</servlet-name>
+        <servlet-class>servlets.CRUDUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CreateDB</servlet-name>
         <url-pattern>/cdb</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CRUDUser</servlet-name>
+        <url-pattern>/CRUDUser</url-pattern>
     </servlet-mapping>
 </web-app>

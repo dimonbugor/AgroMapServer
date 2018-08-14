@@ -47,6 +47,13 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Tracker> trackers = new HashSet<>();
 
+    public User(String login, String password, String firstName, String lastName) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public int getId() {
         return id;
     }
