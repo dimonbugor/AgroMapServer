@@ -2,6 +2,7 @@
 package service;
 
 import dao.DAO;
+import dao.UserDao;
 import entitys.User;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class UserService extends Service<User>{
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         super.delete(id); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -33,7 +34,7 @@ public class UserService extends Service<User>{
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(Integer id) {
         return super.findById(id); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -47,6 +48,11 @@ public class UserService extends Service<User>{
         super.add(entity); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
-    
+    public User findByLogin(String login){
+        UserDao d = new UserDao();
+        d.openSession();
+        User user = (User) d.findByLogin(login);
+        d.closeSession();
+        return user;
+    }        
 }

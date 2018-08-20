@@ -14,9 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "userTb")
+@XmlRootElement
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +28,7 @@ public class User implements Serializable {
     @Column(name = "id_user")
     private int id;
     
-    @Column(name = "login", nullable = false)
+    @Column(name = "login", nullable = false, unique = true)
     private String login;
     
     @Column(name= "password", nullable = false)
@@ -47,11 +50,16 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Tracker> trackers = new HashSet<>();
 
-    public User(String login, String password, String firstName, String lastName) {
+    public User(String login, String password, String firstName, String lastName, Access access) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.access = access;
+    }
+
+    public User() {
+        
     }
 
     public int getId() {
@@ -102,6 +110,7 @@ public class User implements Serializable {
         this.access = access;
     }
 
+    @XmlTransient
     public Set<Transport> getTransports() {
         return transports;
     }
@@ -110,6 +119,7 @@ public class User implements Serializable {
         this.transports = transports;
     }
 
+    @XmlTransient
     public Set<Tracker> getTrackers() {
         return trackers;
     }

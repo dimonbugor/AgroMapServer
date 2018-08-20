@@ -22,7 +22,7 @@ public class TransportDao extends DAO<Transport>{
     }
 
     @Override
-    public Transport findById(Long id) {
+    public Transport findById(Integer id) {
         return super.findById(id); //To change body of generated methods, choose Tools | Templates.
     }
 

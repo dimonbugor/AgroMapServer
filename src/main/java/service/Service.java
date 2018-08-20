@@ -27,7 +27,7 @@ public class Service<T> {
     }
 
     //найти по id
-    public T findById(Long id) {
+    public T findById(Integer id) {
         dao.openSession();
         T t = (T) dao.findById(id);
         dao.closeSession();
@@ -43,7 +43,7 @@ public class Service<T> {
     }
 
     //удалить
-    public void delete(Long id) {
+    public void delete(Integer id) {
         dao.openSessionwithTransaction();
         T t = (T) dao.findById(id);
         dao.delete(t);

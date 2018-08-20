@@ -22,7 +22,7 @@ public class TransportService extends Service<Transport>{
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         super.delete(id); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -32,7 +32,7 @@ public class TransportService extends Service<Transport>{
     }
 
     @Override
-    public Transport findById(Long id) {
+    public Transport findById(Integer id) {
         return super.findById(id); //To change body of generated methods, choose Tools | Templates.
     }
 

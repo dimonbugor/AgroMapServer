@@ -22,7 +22,7 @@ public class AccessDao extends DAO<Access>{
     }
 
     @Override
-    public Access findById(Long id) {
+    public Access findById(Integer id) {
         return super.findById(id); //To change body of generated methods, choose Tools | Templates.
     }
 

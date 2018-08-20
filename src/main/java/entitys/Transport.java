@@ -14,10 +14,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
 @Table(name = "transportTb")
+@XmlRootElement
 public class Transport implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,7 +32,7 @@ public class Transport implements Serializable {
     @Column(name="transport_title", nullable = false)
     private String transportTitle;
     
-    @Column(name="transport_num", nullable = false)
+    @Column(name="transport_num", nullable = false, unique = true)
     private String transportNum;
     
     @OneToOne(cascade = CascadeType.ALL)
@@ -73,6 +76,7 @@ public class Transport implements Serializable {
         this.user = user;
     }
 
+    @XmlTransient
     public Set<Tracker> getTrackers() {
         return trackers;
     }

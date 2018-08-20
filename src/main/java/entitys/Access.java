@@ -12,10 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
 @Table(name = "accessTb")
+@XmlRootElement
 public class Access implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,7 +27,7 @@ public class Access implements Serializable {
     @Column(name = "id_acces")
     private int id;
     
-    @Column(name = "access_title", nullable = false)
+    @Column(name = "access_title", nullable = false, unique = true)
     private String accesTitle;
     
     @OneToMany(mappedBy = "access", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -46,6 +49,7 @@ public class Access implements Serializable {
         this.id = id;
     }
 
+    @XmlTransient
     public Set<User> getUsers() {
         return users;
     }

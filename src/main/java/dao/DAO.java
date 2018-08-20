@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class DAO<T> implements Daointerface<T, Long>{
+public class DAO<T> implements Daointerface<T, Integer>{
     
     private T entity;
     
@@ -66,7 +66,7 @@ public class DAO<T> implements Daointerface<T, Long>{
     }
 
     @Override
-    public T findById(Long id) {
+    public T findById(Integer id) {
         T t = (T) getSession().get(entity.getClass(), id);
         return t;
     }
@@ -90,5 +90,4 @@ public class DAO<T> implements Daointerface<T, Long>{
             delete(t);
         }
     }
-    
 }

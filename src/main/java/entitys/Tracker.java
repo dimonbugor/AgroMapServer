@@ -12,10 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
 @Table(name = "trackerTb")
+@XmlRootElement
 public class Tracker implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,8 +26,8 @@ public class Tracker implements Serializable {
     @Column(name= "id_tracker")
     private int id;
     
-    @Column(name= "date", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name= "dateTime", nullable = false)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date;
     
     //id_transport
