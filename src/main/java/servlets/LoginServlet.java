@@ -3,7 +3,6 @@ package servlets;
 import dao.UserDao;
 import entitys.User;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,13 +53,6 @@ public class LoginServlet extends HttpServlet {
         log.info("======================================================");
 
         String returnJson = "{login: " + loginSearch + ", password: " + passwordSearch + "}";
-        response.setHeader("JSON", returnJson);
-        
-        List<User> users = new UserService(new UserDao()).findAll();
-        
-        for(User u : users){
-            log.info("AllUser: " + u.toString());
-        }
-        
+        response.setHeader("JSON", returnJson);        
     }
 }
