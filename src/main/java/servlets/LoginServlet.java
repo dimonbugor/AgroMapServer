@@ -54,5 +54,8 @@ public class LoginServlet extends HttpServlet {
 
         String returnJson = "{login: " + loginSearch + ", password: " + passwordSearch + "}";
         response.setHeader("JSON", returnJson);
+        
+        
+        
     }
 }
