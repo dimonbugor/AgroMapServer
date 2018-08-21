@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
         String returnJson = "{login: " + loginSearch + ", password: " + passwordSearch + "}";
         response.setHeader("JSON", returnJson);
         
-        List<User> users = userService.findAll();
+        List<User> users = new UserService(new UserDao()).findAll();
         
         for(User u : users){
             log.info("AllUser: " + u.toString());
