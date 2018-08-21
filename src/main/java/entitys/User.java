@@ -1,4 +1,3 @@
-
 package entitys;
 
 import java.io.Serializable;
@@ -27,26 +26,26 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user")
     private int id;
-    
+
     @Column(name = "login", nullable = false, unique = true)
     private String login;
-    
-    @Column(name= "password", nullable = false)
+
+    @Column(name = "password", nullable = false)
     private String password;
-    
-    @Column(name= "first_name", nullable = false)
+
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    
-    @Column(name= "last_name", nullable = false)
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    
+
     @ManyToOne
-    @JoinColumn(name="id_acces")
+    @JoinColumn(name = "id_acces")
     private Access access;
-    
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Transport> transports = new HashSet<>();
-    
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Tracker> trackers = new HashSet<>();
 
@@ -59,7 +58,7 @@ public class User implements Serializable {
     }
 
     public User() {
-        
+
     }
 
     public int getId() {
@@ -150,7 +149,13 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "entitys.User[ id=" + id + " ]";
+        return "entitys.User"
+                + "[ id= " + id
+                + "login= " + login
+                + "password= " + password
+                + "firstName= " + firstName
+                + "lastName= " + lastName
+                + "access= " + access.toString() + " ]";
     }
-    
+
 }
