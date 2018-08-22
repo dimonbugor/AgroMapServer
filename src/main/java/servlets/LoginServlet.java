@@ -20,10 +20,6 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        log.info("======================================================");
-        log.info("!!!Передано login: " + login + ", password: " + password);
-        log.info("======================================================");
-
         boolean loginSearch = false;
         boolean passwordSearch = false;
 
