@@ -3,6 +3,7 @@ package servlets;
 import dao.UserDao;
 import entitys.User;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import service.UserService;
 
 public class LoginServlet extends HttpServlet {
 
-    private static Logger log = Logger.getLogger(LoginServlet.class.getName());
+    private static final Logger log = Logger.getLogger(LoginServlet.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,8 +45,8 @@ public class LoginServlet extends HttpServlet {
         }
 
         log.info("======================================================");
-        log.info("loginSearch: " + String.valueOf(loginSearch));
-        log.info("passwordSearch: " + String.valueOf(passwordSearch));
+        log.log(Level.INFO, "loginSearch: {0}", String.valueOf(loginSearch));
+        log.log(Level.INFO, "passwordSearch: {0}", String.valueOf(passwordSearch));
         log.info("======================================================");
 
         String returnJson = "{login: " + loginSearch + ", password: " + passwordSearch + "}";
