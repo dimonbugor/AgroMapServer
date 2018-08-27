@@ -29,10 +29,6 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = userService.findByLogin(login);
 
-            log.info("======================================================");
-            log.info(user.toString());
-            log.info("======================================================");
-
             loginSearch = true;
             passwordSearch = user.getPassword().equals(password);
 
@@ -44,12 +40,7 @@ public class LoginServlet extends HttpServlet {
             passwordSearch = false;
         }
 
-        log.info("======================================================");
-        log.log(Level.INFO, "loginSearch: {0}", String.valueOf(loginSearch));
-        log.log(Level.INFO, "passwordSearch: {0}", String.valueOf(passwordSearch));
-        log.info("======================================================");
-
-        String returnJson = "{login: " + loginSearch + ", password: " + passwordSearch + "}";
+        String returnJson = "{\"login\": " + "\""+ loginSearch + "\""+ ", \"password\": " + "\""+ passwordSearch + "\""+ "}";
         response.setHeader("JSON", returnJson);        
     }
 }
