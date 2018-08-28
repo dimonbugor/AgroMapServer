@@ -20,6 +20,9 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+        
+        log.log(Level.INFO, "LOGIN: {0}", login);
+        log.log(Level.INFO, "PASSWORD: {0}", password);
 
         boolean loginSearch = false;
         boolean passwordSearch = false;
@@ -40,7 +43,12 @@ public class LoginServlet extends HttpServlet {
             passwordSearch = false;
         }
 
-        String returnJson = "{\"login\": " + "\""+ loginSearch + "\""+ ", \"password\": " + "\""+ passwordSearch + "\""+ "}";
+        String returnJson = "{\"login\": "
+                + "\""+ loginSearch + "\""
+                + ", \"password\": " + "\""
+                + passwordSearch
+                + "\""
+                + "}";
         response.setHeader("JSON", returnJson);        
     }
 }
